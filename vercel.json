@@ -46,10 +46,5 @@
     "VITE_ADMIN_EMAIL": "onlycatbrasil@gmail.com",
     "VITE_APP_ENV": "production"
   },
-  "regions": ["gru1"],
-  "functions": {
-    "app/**": {
-      "maxDuration": 30
-    }
-  }
+  "regions": ["iad1"]
 } 
