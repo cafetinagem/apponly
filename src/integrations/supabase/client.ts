@@ -2,10 +2,31 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = "https://upgfoemhrqwvonboduao.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwZ2ZvZW1ocnF3dm9uYm9kdWFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzMTM3NDYsImV4cCI6MjA2NTg4OTc0Nn0.36oAbqRcoKrxshag9H2zq0LzfMBm0Tu0UE44YYiEttw";
+// Função para obter variáveis de ambiente (Vite ou window.ENV para Hostinger)
+const getEnvVar = (key: string): string => {
+  // Primeiro tenta window.ENV (Hostinger)
+  if (typeof window !== 'undefined' && (window as any).ENV && (window as any).ENV[key]) {
+    return (window as any).ENV[key];
+  }
+  
+  // Fallback para import.meta.env (Vite)
+  return import.meta.env[key] || '';
+};
+
+const supabaseUrl = getEnvVar('VITE_SUPABASE_URL');
+const supabaseAnonKey = getEnvVar('VITE_SUPABASE_ANON_KEY');
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing Supabase environment variables');
+}
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true
+  }
+});
