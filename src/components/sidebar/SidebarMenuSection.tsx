@@ -6,6 +6,7 @@ import { useSidebarState } from '@/hooks/useSidebarState';
 import { DashboardSection } from './sections/DashboardSection';
 import { TasksSection } from './sections/TasksSection';
 import { ModelsSection } from './sections/ModelsSection';
+import { FinancialSection } from './sections/FinancialSection';
 import { AdminSection } from './sections/AdminSection';
 import { AuthSection } from './sections/AuthSection';
 
@@ -18,6 +19,8 @@ export function SidebarMenuSection() {
     setIsTasksOpen,
     isModelsOpen,
     setIsModelsOpen,
+    isFinancialOpen,
+    setIsFinancialOpen,
     handleLinkClick
   } = useSidebarState();
 
@@ -41,6 +44,13 @@ export function SidebarMenuSection() {
         currentPath={location.pathname}
         isModelsOpen={isModelsOpen}
         setIsModelsOpen={setIsModelsOpen}
+        onLinkClick={handleLinkClick}
+      />
+      
+      <FinancialSection
+        currentPath={location.pathname}
+        isFinancialOpen={isFinancialOpen}
+        setIsFinancialOpen={setIsFinancialOpen}
         onLinkClick={handleLinkClick}
       />
       

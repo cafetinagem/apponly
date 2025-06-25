@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: onlycat-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: postgresql://postgres.upgfoemhrqwvonboduao:onlycatbrasil2005122@aws-0-sa-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true
+      - key: DIRECT_URL
+        value: postgresql://postgres.upgfoemhrqwvonboduao:onlycatbrasil2005122@aws-0-sa-east-1.pooler.supabase.com:5432/postgres
+      - key: SUPABASE_URL
+        value: https://upgfoemhrqwvonboduao.supabase.co
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwZ2ZvZW1ocnF3dm9uYm9kdWFvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MDMxMzc0NiwiZXhwIjoyMDY1ODg5NzQ2fQ.ZiN0snYTcVIa8txLjugd-7ot_tLMVDVJhBgiPru9VMw
+      - key: PORT
+        value: 3000
+      - key: CORS_ORIGIN
+        sync: false
+    autoDeploy: true
+    branch: main
+    rootDir: ./backend 

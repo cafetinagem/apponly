@@ -9,6 +9,7 @@ export function useSidebarState() {
   
   const [isTasksOpen, setIsTasksOpen] = useState(location.pathname.startsWith('/tasks'));
   const [isModelsOpen, setIsModelsOpen] = useState(location.pathname.startsWith('/models'));
+  const [isFinancialOpen, setIsFinancialOpen] = useState(location.pathname.startsWith('/financial'));
   const [isAdminOpen, setIsAdminOpen] = useState(location.pathname.startsWith('/admin'));
 
   const handleLinkClick = () => {
@@ -23,6 +24,8 @@ export function useSidebarState() {
     setIsTasksOpen,
     isModelsOpen,
     setIsModelsOpen,
+    isFinancialOpen,
+    setIsFinancialOpen,
     isAdminOpen,
     setIsAdminOpen,
     handleLinkClick

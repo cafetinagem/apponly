@@ -21,6 +21,13 @@ import AdminAnalyticsPage from "./pages/admin/reports/analytics/page";
 import AdminSettingsPage from "./pages/admin/settings/page";
 import AdminSecuritySettingsPage from "./pages/admin/settings/security/page";
 import ModelSchedulingPage from "./pages/models/scheduling/page";
+import FinancialDashboardPage from "./pages/financial/dashboard";
+import FinancialSalesPage from "./pages/financial/sales/page";
+import ChatSalesPage from "./pages/financial/chat-sales/page";
+import FinancialReportsPage from "./pages/financial/reports/page";
+import FinancialSettingsPage from "./pages/financial/settings/page";
+import EmailIntegrationPage from "./pages/financial/email-integration/page";
+import SimpleEmailPage from "./pages/financial/simple-email/page";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -65,6 +72,15 @@ const App = () => (
             <Route path="/notes" element={<NotesPage />} />
             <Route path="/notes/create" element={<NotesPage />} />
             <Route path="/notes/edit/:id" element={<NotesPage />} />
+            
+            {/* Módulo Financeiro */}
+            <Route path="/financial/dashboard" element={<FinancialDashboardPage />} />
+            <Route path="/financial/sales" element={<FinancialSalesPage />} />
+            <Route path="/financial/chat-sales" element={<ChatSalesPage />} />
+            <Route path="/financial/reports" element={<FinancialReportsPage />} />
+            <Route path="/financial/settings" element={<FinancialSettingsPage />} />
+            <Route path="/financial/email-integration" element={<EmailIntegrationPage />} />
+            <Route path="/financial/simple-email" element={<SimpleEmailPage />} />
             
             {/* Painel Administrativo */}
             <Route path="/admin" element={<AdminPage />} />
